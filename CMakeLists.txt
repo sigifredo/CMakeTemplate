@@ -1,47 +1,49 @@
-PROJECT( gdBase )
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+project( gdBase )
+cmake_minimum_required(VERSION 2.8)
 
-FIND_PACKAGE(Qt4 REQUIRED QtCore QtGui)
+find_package(Qt4 REQUIRED QtCore QtGui)
 
-INCLUDE( ${QT_USE_FILE} )
+include( ${QT_USE_FILE} )
 
-INCLUDE_DIRECTORIES( ${QT_INCLUDES} ${CMAKE_BINARY_DIR} includes )
+include_directories( ${QT_INCLUDES} ${CMAKE_BINARY_DIR} includes )
 
 #ADD_DEFINITIONS( -Wall )
 
-SET( GDBASE_HDRS
+set( GDBASE_HDRS
 includes/Export.hpp
 )
 
-SET( GDBASE_MOC_HDRS
+set( GDBASE_MOC_HDRS
 includes/About.hpp
 )
 
-SET( GDBASE_SRCS
+set( GDBASE_SRCS
 src/About.cpp
 )
 
-SET( GDBASE_UIS
+set( GDBASE_UIS
 uis/About.ui
 )
 
-QT4_WRAP_UI( GDBASE_HDRS_UIS
-${GDBASE_UIS}
+set(GDBASE_RCS
+resources/icons.qrc
 )
 
-QT4_WRAP_CPP( GDBASE_MOC_SRCS
-${GDBASE_MOC_HDRS}
-)
+qt4_wrap_ui( GDBASE_HDRS_UIS ${GDBASE_UIS} )
+qt4_wrap_cpp( GDBASE_MOC_SRCS ${GDBASE_MOC_HDRS} )
+qt4_add_resources( GDBASE_RCS_SRCS ${GDBASE_RCS} )
 
-add_library ( gdBase SHARED
+add_library(GDBase SHARED
 ${GDBASE_HDRS_UIS}
 ${GDBASE_HDRS}
 ${GDBASE_MOC_SRCS}
 ${GDBASE_SRCS}
+${GDBASE_HDRS_UIS}
+${GDBASE_RCS_SRCS}
 )
 
-ADD_EXECUTABLE(about test/about.cpp)
+add_executable(about test/about.cpp)
 
-target_link_libraries(gdBase ${QT_LIBRARIES})
+target_link_libraries(GDBase ${QT_LIBRARIES})
 
-TARGET_LINK_LIBRARIES( about gdBase )
+target_link_libraries( about GDBase )
