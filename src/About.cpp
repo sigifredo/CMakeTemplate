@@ -25,7 +25,7 @@ void About::addAuthor(const QString &sName, const QString &sTask, const QString 
         sAuthor += "<br>" + sWebAddress + "</u></font><br>";
     else
         sAuthor += "</u></font><br>";
-    // _pAuthorsLabel->setText(_pAuthorsLabel->text() + sAuthor);
+    _pAuthorsLabel->setText(_pAuthorsLabel->text() + sAuthor);
 }
 
 void About::setVersion(const QString sVersion)
@@ -54,7 +54,6 @@ void About::init()
         pAboutLayout->addWidget(_pDescriptionLabel, 0, 0, 1, 1);
         _pTabWidget->addTab(pAboutTab, "About");
     }
-    pLayout->addWidget(_pTabWidget, 1, 0, 1, 2);
 
     QDialogButtonBox * pButtonBox = new QDialogButtonBox(this);
     pButtonBox->setObjectName(QString::fromUtf8("buttonBox"));
@@ -62,6 +61,27 @@ void About::init()
     pButtonBox->setStandardButtons(QDialogButtonBox::Close);
 
     pLayout->addWidget(pButtonBox, 2, 1, 1, 1);
+
+    // Pestaña de autores
+    {
+        QWidget * pAuthorTab = new QWidget(_pTabWidget);
+        QGridLayout * pAuthorsLayout = new QGridLayout(pAuthorTab);
+        _pAuthorsLabel = new QLabel(pAuthorTab);
+        addAuthor("GfifDev Development Team", "Developers", "info@gfifdev.com", "www.gfifdev.com");
+        pAuthorsLayout->addWidget(_pAuthorsLabel, 0, 0, 1, 1);
+        _pTabWidget->addTab(pAuthorTab, "Authors");
+    }
+
+    // Pestaña de licencia
+    {
+        QWidget * pLicenceTab = new QWidget(_pTabWidget);
+        QGridLayout * pLicenceLayout = new QGridLayout(pLicenceTab);
+        _pLicenceLabel = new QLabel(pLicenceTab);
+        pLicenceLayout->addWidget(_pLicenceLabel, 0, 0, 1, 1);
+        _pTabWidget->addTab(pLicenceTab, "Licence");
+    }
+
+    pLayout->addWidget(_pTabWidget, 1, 0, 1, 2);
 
     connect(pButtonBox, SIGNAL(rejected()), this, SLOT(reject()));
 }
