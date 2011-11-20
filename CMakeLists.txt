@@ -7,6 +7,18 @@ include( ${QT_USE_FILE} )
 
 include_directories( ${QT_INCLUDES} ${CMAKE_BINARY_DIR} includes )
 
+# Diviciones que puede contener la librería
+set(DIVS "conf")
+
+foreach(it ${DIVS})
+  message("-> Buscando archivos ${it}")
+  file(GLOB_RECURSE MODULOS "*_${it}.cmake")
+  foreach(jt ${MODULOS})
+    message(STATUS "Módulo: ${jt} encontrado")
+    include(${jt})
+  endforeach(jt)
+endforeach(it)
+
 #ADD_DEFINITIONS( -Wall )
 
 set( GDBASE_HDRS
@@ -47,3 +59,5 @@ add_executable(about test/about.cpp)
 target_link_libraries(GDBase ${QT_LIBRARIES})
 
 target_link_libraries( about GDBase )
+
+GDINSTALL_H("gui" ${GDBASE_HDRS} ${GDBASE_MOC_HDRS})

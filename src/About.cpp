@@ -4,6 +4,7 @@
 // Qt
 #include<QGridLayout>
 #include<QLabel>
+#include<QLineEdit>
 #include<QTabWidget>
 #include<QDialogButtonBox>
 
@@ -76,8 +77,9 @@ void About::init()
     {
         QWidget * pLicenceTab = new QWidget(_pTabWidget);
         QGridLayout * pLicenceLayout = new QGridLayout(pLicenceTab);
-        _pLicenceLabel = new QLabel(pLicenceTab);
-        pLicenceLayout->addWidget(_pLicenceLabel, 0, 0, 1, 1);
+        _pLicenceLineEdit = new QLineEdit(pLicenceTab);
+        _pLicenceLineEdit->setReadOnly(true);
+        pLicenceLayout->addWidget(_pLicenceLineEdit, 0, 0, 1, 1);
         _pTabWidget->addTab(pLicenceTab, "Licence");
     }
 
