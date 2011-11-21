@@ -1,22 +1,14 @@
 Source: gdbase
+Section: science
 Priority: extra
 Maintainer: Sigifredo Escobar Gómez <sigifredo89@gmail.com>
-Build-Depends: debhelper (>= 8.0.0), cmake
-Standards-Version: 3.9.2
-Section: libs
+Build-Depends: debhelper (>= 7.0.50~), cmake
+Standards-Version: 3.9.1
 Homepage: <insert the upstream URL, if relevant>
-#Vcs-Git: git://git.debian.org/collab-maint/gdbase.git
-#Vcs-Browser: http://git.debian.org/?p=collab-maint/gdbase.git;a=summary
+#Vcs-Git: git://git.debian.org/collab-maint/xorbit.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/xorbit.git;a=summary
 
-Package: gdbase-dev
-Section: libdevel
-Architecture: any
-Depends: gdbaseBROKEN (= ${binary:Version})
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
-
-Package: gdbaseBROKEN
-Section: libs
+Package: gdbase
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: <insert up to 60 chars description>
