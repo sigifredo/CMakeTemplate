@@ -61,3 +61,4 @@ target_link_libraries(GDBase ${QT_LIBRARIES})
 target_link_libraries( about GDBase )
 
 GDINSTALL_H("gui" ${GDBASE_HDRS} ${GDBASE_MOC_HDRS})
+GDINSTALL_LIB("SHARED" GDBase)
