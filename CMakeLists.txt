@@ -5,10 +5,10 @@ find_package(Qt4 REQUIRED QtCore QtGui)
 
 include( ${QT_USE_FILE} )
 
-include_directories( ${QT_INCLUDES} ${CMAKE_BINARY_DIR} includes )
+include_directories( ${QT_INCLUDES} ${CMAKE_BINARY_DIR} include )
 
 # Diviciones que puede contener la librería
-set(DIVS "conf")
+set(DIVS "conf" "mod")
 
 foreach(it ${DIVS})
   message("-> Buscando archivos ${it}")
@@ -22,12 +22,12 @@ endforeach(it)
 #ADD_DEFINITIONS( -Wall )
 
 set( GDBASE_HDRS
-includes/Export.hpp
-includes/Types.hpp
+include/Export.hpp
+include/Types.hpp
 )
 
 set( GDBASE_MOC_HDRS
-includes/About.hpp
+include/About.hpp
 )
 
 set( GDBASE_SRCS
