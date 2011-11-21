@@ -9,6 +9,14 @@ class QLabel;
 class QLineEdit;
 class QTabWidget;
 
+/**
+ * @class About
+ * \brief Cuadro de dialogo "Acerca de..."
+ *
+ * Clase que inplementa un cuadro de dialogo con toda la información que se quiere mostrar al usuario acerca de nuestra aplicación.
+ *
+ */
+
 class GDBASE_EXPORT About: public QDialog
 {
     Q_OBJECT

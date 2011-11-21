@@ -23,6 +23,7 @@ endforeach(it)
 
 set( GDBASE_HDRS
 includes/Export.hpp
+includes/Types.hpp
 )
 
 set( GDBASE_MOC_HDRS
@@ -33,24 +34,17 @@ set( GDBASE_SRCS
 src/About.cpp
 )
 
-set( GDBASE_UIS
-uis/About.ui
-)
-
 set(GDBASE_RCS
 resources/icons.qrc
 )
 
-qt4_wrap_ui( GDBASE_HDRS_UIS ${GDBASE_UIS} )
 qt4_wrap_cpp( GDBASE_MOC_SRCS ${GDBASE_MOC_HDRS} )
 qt4_add_resources( GDBASE_RCS_SRCS ${GDBASE_RCS} )
 
 add_library(GDBase SHARED
-${GDBASE_HDRS_UIS}
 ${GDBASE_HDRS}
 ${GDBASE_MOC_SRCS}
 ${GDBASE_SRCS}
-${GDBASE_HDRS_UIS}
 ${GDBASE_RCS_SRCS}
 )
 
