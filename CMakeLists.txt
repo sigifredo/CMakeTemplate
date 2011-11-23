@@ -21,34 +21,6 @@ endforeach(it)
 
 #ADD_DEFINITIONS( -Wall )
 
-set( GDBASE_HDRS
-include/Export.hpp
-include/Types.hpp
-)
-
-set( GDBASE_MOC_HDRS
-include/About.hpp
-)
-
-set( GDBASE_SRCS
-src/About.cpp
-)
-
-set(GDBASE_RCS
-resources/icons.qrc
-)
-
-qt4_wrap_cpp( GDBASE_MOC_SRCS ${GDBASE_MOC_HDRS} )
-qt4_add_resources( GDBASE_RCS_SRCS ${GDBASE_RCS} )
-
-add_library(GDBase SHARED
-${GDBASE_HDRS}
-${GDBASE_MOC_SRCS}
-${GDBASE_SRCS}
-${GDBASE_RCS_SRCS}
-)
-
-target_link_libraries(GDBase ${QT_LIBRARIES})
 
 #GDINSTALL_H("gui" ${GDBASE_HDRS} ${GDBASE_MOC_HDRS})
 #GDINSTALL_LIB("SHARED" GDBase)

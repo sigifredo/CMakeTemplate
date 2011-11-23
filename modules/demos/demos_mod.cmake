@@ -23,5 +23,5 @@ ${DEMO_SRCS}
 
 add_executable(demo ${DEMO_DIR}/src/demo.cpp)
 
-target_link_libraries(ldemo GDBase ${QT_LIBRARIES})
+target_link_libraries(ldemo GDGui ${QT_LIBRARIES})
 target_link_libraries(demo ldemo)
