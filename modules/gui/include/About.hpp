@@ -1,4 +1,3 @@
-// http://netload.in/datei2F87sgYnuB.htm
 #ifndef GDBASE_ABOUT_HPP
 #define GDBASE_ABOUT_HPP
 
