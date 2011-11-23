@@ -20,8 +20,13 @@ ${DEMO_HDRS}
 ${DEMO_MOC_SRCS}
 ${DEMO_SRCS}
 )
+set(DEMO ${DEMO_DIR}/src/demo.cpp)
 
-add_executable(demo ${DEMO_DIR}/src/demo.cpp)
+if(${CMAKE_HOST_SYSTEM} MATCHES "Windows")
+  LIST(APPEND DEMO ${CMAKE_SOURCE_DIR}/resources/icon.rc)
+endif()
+
+add_executable(demo ${DEMO})
 
 target_link_libraries(ldemo GDGui ${QT_LIBRARIES})
 target_link_libraries(demo ldemo)
