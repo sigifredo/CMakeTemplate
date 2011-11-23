@@ -3,7 +3,7 @@
 #define ESPORT_HPP
 
 #ifdef _WIN32
-#  ifdef GDBase_EXPORTS
+#  ifdef GDGui_EXPORTS
 #    define GDBASE_EXPORT	__declspec( dllexport )
 #  else
 #    define GDBASE_EXPORT	__declspec( dllimport )
