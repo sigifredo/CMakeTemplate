@@ -1,4 +1,4 @@
-project( gdBase )
+project( gdbase )
 cmake_minimum_required(VERSION 2.8)
 
 find_package(Qt4 REQUIRED QtCore QtGui)
@@ -48,11 +48,7 @@ ${GDBASE_SRCS}
 ${GDBASE_RCS_SRCS}
 )
 
-add_executable(about test/about.cpp)
-
 target_link_libraries(GDBase ${QT_LIBRARIES})
 
-target_link_libraries( about GDBase )
-
-GDINSTALL_H("gui" ${GDBASE_HDRS} ${GDBASE_MOC_HDRS})
-GDINSTALL_LIB("SHARED" GDBase)
+#GDINSTALL_H("gui" ${GDBASE_HDRS} ${GDBASE_MOC_HDRS})
+#GDINSTALL_LIB("SHARED" GDBase)

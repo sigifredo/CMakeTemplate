@@ -1,4 +1,4 @@
-
+// http://netload.in/datei2F87sgYnuB.htm
 #ifndef GDBASE_ABOUT_HPP
 #define GDBASE_ABOUT_HPP
 
@@ -16,20 +16,18 @@ class QTabWidget;
  * Clase que inplementa un cuadro de dialogo con toda la información que se quiere mostrar al usuario acerca de nuestra aplicación.
  *
  */
-
 class GDBASE_EXPORT About: public QDialog
 {
     Q_OBJECT
 public:
     /**
      * \brief Constructor de la clase.
-    *
-    * @param sAppName Nombre de la aplicación.
-    * @param sAppVersion Versión de la aplicación.
-    * @param sDescription Descripción de la aplicación.
-    * @param pParent Puntero al objeto padre.
-    *
-    *
+     *
+     * @param sAppName Nombre de la aplicación.
+     * @param sAppVersion Versión de la aplicación.
+     * @param sDescription Descripción de la aplicación.
+     * @param pParent Puntero al objeto padre.
+     *
      */
     About(const QString &sAppName, const QString &sAppVersion, const QString &sDescription, QWidget * pParent = 0);
 
