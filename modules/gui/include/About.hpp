@@ -15,7 +15,7 @@ class QTabWidget;
  * Clase que inplementa un cuadro de dialogo con toda la información que se quiere mostrar al usuario acerca de nuestra aplicación.
  *
  */
-class GDBASE_EXPORT About: public QDialog
+class GDGUI_EXPORT About: public QDialog
 {
     Q_OBJECT
 public:

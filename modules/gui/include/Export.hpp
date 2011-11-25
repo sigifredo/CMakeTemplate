@@ -4,12 +4,12 @@
 
 #ifdef _WIN32
 #  ifdef GDGui_EXPORTS
-#    define GDBASE_EXPORT	__declspec( dllexport )
+#    define GDGUI_EXPORT	__declspec( dllexport )
 #  else
-#    define GDBASE_EXPORT	__declspec( dllimport )
+#    define GDGUI_EXPORT	__declspec( dllimport )
 #  endif
 #else
-#  define GDBASE_EXPORT
+#  define GDGUI_EXPORT
 #endif
 
 #endif

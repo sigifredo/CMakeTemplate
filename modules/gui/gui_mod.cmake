@@ -8,10 +8,13 @@ ${GUI_DIR}/include/Types.hpp
 
 set( GUI_MOC_HDRS
 ${GUI_DIR}/include/About.hpp
+${GUI_DIR}/include/QtWin.hpp
+${GUI_DIR}/include/WindowNotifier.hpp
 )
 
 set( GUI_SRCS
 ${GUI_DIR}/src/About.cpp
+${GUI_DIR}/src/QtWin.cpp
 )
 
 set( GUI_RCS
@@ -27,9 +30,18 @@ add_library( GDGui SHARED ${GUI} )
 
 target_link_libraries(GDGui ${QT_LIBRARIES})
 
-# EXEC_PROGRAM( regsvr32 
+set(filename ${CMAKE_INSTALL_PREFIX}/GDGui)
+
+message(" -> ${filename}")
+
+# INSTALL( CODE
+#      "EXEC_PROGRAM( regsvr32 ARGS \"/s\" ARGS \"${filename}\"
+#      OUTPUT_VARIABLE POST_INST_OUT RETURN_VALUE POST_INST_RES )"
+#  )
+
+# install(EXEC_PROGRAM( regsvr32 
 #               ARGS \"/s\" 
-#               ARGS \"${file_name}\" 
+#               ARGS \"${filename}\" ))
 #               OUTPUT_VARIABLE ov RETURN_VALUE rv )
 
 install( TARGETS GDGui

@@ -2,6 +2,7 @@
 // Own
 #include<DemoWindow.hpp>
 #include<About.hpp>
+#include<QtWin.hpp>
 
 // Qt
 #include<QGridLayout>
@@ -37,5 +38,23 @@ Window::Window(QWidget * pParent, Qt::WindowFlags flags):
 	void Window::about()
 	{
 		About ab("Demo", "0.1", "Description", this);
+
+#ifdef _WIN32
+	ab.setAttribute(Qt::WA_TranslucentBackground);
+    ab.setAttribute(Qt::WA_NoSystemBackground, false);
+	QPalette pal = ab.palette();
+    QColor bg = pal.window().color();
+    bg.setAlpha(0x0);
+    pal.setColor(QPalette::Window, bg);
+    ab.setPalette(pal);
+    ab.ensurePolished(); // workaround Oxygen filling the background
+    ab.setAttribute(Qt::WA_StyledBackground, false);
+#endif
+
+	if(QtWin::isCompositionEnabled()) {
+        QtWin::extendFrameIntoClientArea(&ab);
+        ab.setContentsMargins(0, 0, 0, 0);
+    }
+
 		ab.exec();
 	}
