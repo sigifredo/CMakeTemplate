@@ -21,3 +21,5 @@ foreach(it ${DIVS})
     include(${jt})
   endforeach(jt)
 endforeach(it)
+
+include(CPack)

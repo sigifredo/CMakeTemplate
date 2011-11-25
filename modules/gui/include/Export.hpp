@@ -1,6 +1,6 @@
 
 #ifndef EXPORT_HPP
-#define ESPORT_HPP
+#define EXPORT_HPP
 
 #ifdef _WIN32
 #  ifdef GDGui_EXPORTS

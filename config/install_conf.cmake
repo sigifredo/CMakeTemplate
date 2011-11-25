@@ -19,20 +19,3 @@ set(CPACK_PACKAGE_VERSION_MAJOR "0")
 set(CPACK_PACKAGE_VERSION_MINOR "1")
 set(CPACK_PACKAGE_VERSION_PATCH "2")
 set(CPACK_PACKAGE_INSTALL_DIRECTORY "GfifDev")
-
-# set(CPACK_RESOURCE_FILE_LICENSE ${CMAKE_SOURCE_DIR}/LICENSE-CLUF)
-
-# set(CPACK_NSIS_MENU_LINKS "./bin/slide.exe" "Diapositiva")
-
-# macro pensado para instalar cabeceras.
-# macro( GDINSTALL_H DIR )
-#     foreach(VAL ${ARGN})
-#         if(${CMAKE_HOST_SYSTEM} MATCHES "Linux")
-#             install(FILES ${VAL} DESTINATION /usr/include/GfifDev/${DIR})
-#         elseif(${CMAKE_HOST_SYSTEM} MATCHES "Windows")
-#             install(FILES ${VAL} DESTINATION include/${DIR} COMPONENT headers)
-#         endif()
-#     endforeach(VAL)
-# endmacro(GDINSTALL_H)
-
-include(CPack)
