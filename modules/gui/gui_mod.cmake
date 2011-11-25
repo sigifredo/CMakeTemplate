@@ -21,11 +21,17 @@ ${CMAKE_SOURCE_DIR}/resources/icons.qrc
 qt4_wrap_cpp( GUI_MOC_SRCS ${GUI_MOC_HDRS} )
 qt4_add_resources( GUI_RCS_SRCS ${GUI_RCS} )
 
-add_library(GDGui SHARED
-${GUI_HDRS}
-${GUI_MOC_SRCS}
-${GUI_SRCS}
-${GUI_RCS_SRCS}
-)
+add_library( GDGui SHARED ${GUI_HDRS} ${GUI_MOC_SRCS} ${GUI_SRCS} ${GUI_RCS_SRCS} )
+add_library( GDGuiStatic STATIC ${GUI_HDRS} ${GUI_MOC_SRCS} ${GUI_SRCS} ${GUI_RCS_SRCS} )
 
 target_link_libraries(GDGui ${QT_LIBRARIES})
+#target_link_libraries(GDGuiStatic ${QT_LIBRARIES})
+
+# EXEC_PROGRAM( regsvr32 
+#               ARGS \"/s\" 
+#               ARGS \"${file_name}\" 
+#               OUTPUT_VARIABLE ov RETURN_VALUE rv )
+
+install( TARGETS GDGui GDGuiStatic
+         LIBRARY DESTINATION bin COMPONENT libraries
+         ARCHIVE DESTINATION lib COMPONENT libraries )

@@ -30,3 +30,10 @@ add_executable(demo ${DEMO})
 
 target_link_libraries(ldemo GDGui ${QT_LIBRARIES})
 target_link_libraries(demo ldemo)
+
+install(TARGETS demo ldemo
+  RUNTIME DESTINATION bin
+  LIBRARY DESTINATION bin
+  )
+
+set(CPACK_NSIS_MENU_LINKS "./bin/demo.exe" "Demo")

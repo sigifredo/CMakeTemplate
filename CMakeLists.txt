@@ -7,6 +7,9 @@ include( ${QT_USE_FILE} )
 
 include_directories( ${QT_INCLUDES} ${CMAKE_BINARY_DIR} include )
 
+#MESSAGE("$ENV{PATH}")
+#message("${CMAKE_INSTALL_PREFIX}")
+
 # Diviciones que puede contener la librería
 set(DIVS "conf" "mod")
 
@@ -18,9 +21,3 @@ foreach(it ${DIVS})
     include(${jt})
   endforeach(jt)
 endforeach(it)
-
-#ADD_DEFINITIONS( -Wall )
-
-
-#GDINSTALL_H("gui" ${GDBASE_HDRS} ${GDBASE_MOC_HDRS})
-#GDINSTALL_LIB("SHARED" GDBase)
