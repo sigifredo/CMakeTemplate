@@ -1,5 +1,7 @@
 
+// Own
 #include<About.hpp>
+#include<QtWin.hpp>
 
 // Qt
 #include<QGridLayout>
@@ -14,7 +16,7 @@ About::About(const QString &sAppName, const QString &sAppVersion, const QString 
     init();
 
     _sAppName = sAppName;
-    _pAppInfoLabel->setText("<font size=\"5\">" + sAppName + "</font><br><i>Version " + sAppVersion + "</i><br>Using GfifDev Development Platform 0.1");
+    _pAppInfoLabel->setText("<font size=\"5\">" + sAppName + "</font><br><i>Version " + sAppVersion + "</i><br>Using GfifDev Development Platform 0.2");
     _pDescriptionLabel->setText(sDescription);
     setWindowTitle("About " + sAppName);
 }
@@ -86,4 +88,23 @@ void About::init()
     pLayout->addWidget(_pTabWidget, 1, 0, 1, 2);
 
     connect(pButtonBox, SIGNAL(rejected()), this, SLOT(reject()));
+
+	// Transparencia (Solo Windows 7)
+#ifdef _WIN32
+	this->setAttribute(Qt::WA_TranslucentBackground);
+    this->setAttribute(Qt::WA_NoSystemBackground, false);
+	QPalette pal = this->palette();
+    QColor bg = pal.window().color();
+    bg.setAlpha(0x0);
+    pal.setColor(QPalette::Window, bg);
+    this->setPalette(pal);
+    this->ensurePolished(); // workaround Oxygen filling the background
+    this->setAttribute(Qt::WA_StyledBackground, false);
+#endif
+
+	if(QtWin::isCompositionEnabled())
+	{
+        QtWin::extendFrameIntoClientArea(this);
+        this->setContentsMargins(0, 0, 0, 0);
+    }
 }

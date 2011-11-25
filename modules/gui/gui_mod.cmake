@@ -39,10 +39,7 @@ message(" -> ${filename}")
 #      OUTPUT_VARIABLE POST_INST_OUT RETURN_VALUE POST_INST_RES )"
 #  )
 
-# install(EXEC_PROGRAM( regsvr32 
-#               ARGS \"/s\" 
-#               ARGS \"${filename}\" ))
-#               OUTPUT_VARIABLE ov RETURN_VALUE rv )
-
 install( TARGETS GDGui
          RUNTIME DESTINATION bin )
+
+GDINSTALL_H( "Gui" ${GUI_HDRS} ${GUI_MOC_HDRS} )
