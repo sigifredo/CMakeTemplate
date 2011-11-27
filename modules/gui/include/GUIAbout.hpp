@@ -2,7 +2,7 @@
 #define GDBASE_ABOUT_HPP
 
 // Own
-#include<Export.hpp>
+#include<GUIExport.hpp>
 
 // Qt
 #include<QDialog>

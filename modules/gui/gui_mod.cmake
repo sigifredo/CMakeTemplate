@@ -2,12 +2,11 @@ set(GUI_DIR ${CMAKE_CURRENT_LIST_DIR})
 include_directories(${GUI_DIR}/include)
 
 set( GUI_HDRS
-${GUI_DIR}/include/Export.hpp
-${GUI_DIR}/include/Types.hpp
+${GUI_DIR}/include/GUIExport.hpp
 )
 
 set( GUI_MOC_HDRS
-${GUI_DIR}/include/About.hpp
+${GUI_DIR}/include/GUIAbout.hpp
 )
 
 if(${CMAKE_HOST_SYSTEM} MATCHES "Windows")
@@ -15,8 +14,8 @@ if(${CMAKE_HOST_SYSTEM} MATCHES "Windows")
 endif()
 
 set( GUI_SRCS
-${GUI_DIR}/src/About.cpp
-${GUI_DIR}/src/QtWin.cpp
+${GUI_DIR}/src/GUIAbout.cpp
+${GUI_DIR}/src/GUIQtWin.cpp
 )
 
 set( GUI_RCS

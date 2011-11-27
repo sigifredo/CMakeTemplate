@@ -1,8 +1,8 @@
 
 // Own
 #include<DemoWindow.hpp>
-#include<About.hpp>
-#include<QtWin.hpp>
+#include<GUIAbout.hpp>
+#include<GUIQtWin.hpp>
 
 // Qt
 #include<QGridLayout>
