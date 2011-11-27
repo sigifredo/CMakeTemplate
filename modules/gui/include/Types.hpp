@@ -5,6 +5,10 @@
 #ifndef _WIN32
 #  warning "Terminar de documentar la enumeración"
 #endif
+
+namespace GUI
+{
+
 /**
  * @enum Licence
  * \brief Tipo de licencia
@@ -15,5 +19,7 @@ enum Licence {
     lgpl3,
     gpl3
 };
+
+}
 
 #endif

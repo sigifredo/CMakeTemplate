@@ -4,7 +4,7 @@
 
 #ifdef _WIN32
 #  ifdef ldemo_EXPORTS
-#    define DEMO_EXPORT	__declspec( dllexport )	
+#    define DEMO_EXPORT	__declspec( dllexport )
 #  else
 #    define DEMO_EXPORT	__declspec( dllimport )
 #  endif

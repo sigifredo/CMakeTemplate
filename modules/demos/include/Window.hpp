@@ -9,7 +9,7 @@ namespace Demo
 
 class Window: public QMainWindow
 {
-Q_OBJECT
+    Q_OBJECT
 };
 
 }

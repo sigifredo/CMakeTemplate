@@ -1,12 +1,18 @@
 #ifndef GDBASE_ABOUT_HPP
 #define GDBASE_ABOUT_HPP
 
+// Own
 #include<Export.hpp>
+
+// Qt
 #include<QDialog>
 
 class QLabel;
-class QLineEdit;
+class QTextEdit;
 class QTabWidget;
+
+namespace GUI
+{
 
 /**
  * @class About
@@ -19,6 +25,18 @@ class GDGUI_EXPORT About: public QDialog
 {
     Q_OBJECT
 public:
+    /**
+     * @enum Licence
+     * \brief Tipo de licencia
+     *
+     */
+    enum Licence
+    {
+        cluf, /** Contrato de Licencia de Usuario Final */
+        gpl3, /** Licencia Pública General de GNU */
+        lgpl3 /** Licencia Pública General Reducida de GNU */
+    };
+
     /**
      * \brief Constructor de la clase.
      *
@@ -50,12 +68,31 @@ public:
     QString appName() const;
 
     /**
+     * \brief Indicamos la versión de la aplicación.
+     *
+     * @param licence Enumeración que indica la licencia de la aplicación
+     *
+     */
+    void setLicence(const Licence licence);
+
+    /**
      * \brief Establecemos la versión de la aplicación.
      *
      * @param sVersion Versión de la aplicación.
      *
      */
     void setVersion(const QString sVersion);
+
+    /**
+     * \brief Retorna una cadena con la licencia pasada como argumento.
+     *
+     * @param licence Enumeración que representa la licencia.
+     * @param sLicenced Nombre de la aplicación u organización licenciada.
+     *
+     * @return Cadena con la licencia especificada.
+     *
+     */
+    static QString strLicence(const Licence licence, const QString &sLicenced);
 
 protected:
 
@@ -82,7 +119,7 @@ protected:
     /**
      * Licencia de la aplicación.
      */
-    QLineEdit * _pLicenceLineEdit;
+    QTextEdit * _pLicenceTextEdit;
 
     /**
      * Nombre de la aplicación.
@@ -105,6 +142,8 @@ private:
 inline QString About::appName() const
 {
     return _sAppName;
+}
+
 }
 
 #endif

@@ -12,15 +12,15 @@ namespace Demo
 
 class DEMO_EXPORT Window: public QMainWindow
 {
-Q_OBJECT
-	public:
-		Window(QWidget * pParent = 0, Qt::WindowFlags flags = 0);
+    Q_OBJECT
+public:
+    Window(QWidget * pParent = 0, Qt::WindowFlags flags = 0);
 
 protected:
-	QPushButton * _pAboutPushButton;
+    QPushButton * _pAboutPushButton;
 
-	protected slots:
-		void about();
+protected slots:
+    void about();
 };
 
 }

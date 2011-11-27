@@ -1,14 +1,14 @@
-GDBase es software libre: Usted lo puede redistribuir y modificar
-bajo los términos de la Licencia Pública General Reducida GNU
-(LGPL) como es publicado por La fundación de software libre
-(FSF), la versión 3 o cualquier versión posterior.
+GDBase es software libre: usted lo puede redistribuir y modificar
+bajo los términos de la licencia pública general reducida gnu
+(lgpl) como es publicado por la fundación de software libre
+(fsf), la versión 3 o cualquier versión posterior.
 
 GDBase es distribuido en la espera de que será util,
-pero SIN ALGUNA GARANTÍA; ni siquiera la garantía implícita de
-COMERCIALIZACIÓN o IDONEIDAD PARA UN PROPÓSITO
-PARTICULAR. Vease la Licencia Pública General Reduciada GNU
+pero sin alguna garantía; ni siquiera la garantía implícita de
+comercialización o idoneidad para un propósito
+particular. Vease la licencia pública general reduciada gnu
 para más detalles.
 
-Usted debe haber recibido una copia de la Licencia Pública
-General Reducida GNU junto con GDBase.
+usted debe haber recibido una copia de la licencia pública
+general reducida gnu junto con GDBase.
 Sino, vea <http://www.gnu.org/licenses/>.
