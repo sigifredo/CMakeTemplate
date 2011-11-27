@@ -8,6 +8,8 @@
 **
 ****************************************************************************/
 
+#ifdef _WIN32
+
 #include <QLibrary>
 #include <QApplication>
 #include <QWidget>
@@ -204,4 +206,7 @@ bool WindowNotifier::winEvent(MSG *message, long *result)
     }
     return QWidget::winEvent(message, result);
 }
+
+#endif
+
 #endif

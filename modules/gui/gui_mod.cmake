@@ -8,9 +8,11 @@ ${GUI_DIR}/include/Types.hpp
 
 set( GUI_MOC_HDRS
 ${GUI_DIR}/include/About.hpp
-${GUI_DIR}/include/QtWin.hpp
-${GUI_DIR}/include/WindowNotifier.hpp
 )
+
+if(${CMAKE_HOST_SYSTEM} MATCHES "Windows")
+    list(APPEND GUI_MOC_HDRS ${GUI_DIR}/include/QtWin.hpp ${GUI_DIR}/include/WindowNotifier.hpp)
+endif()
 
 set( GUI_SRCS
 ${GUI_DIR}/src/About.cpp
@@ -30,9 +32,8 @@ add_library( GDGui SHARED ${GUI} )
 
 target_link_libraries(GDGui ${QT_LIBRARIES})
 
-set(filename ${CMAKE_INSTALL_PREFIX}/GDGui)
-
-message(" -> ${filename}")
+# set(filename ${CMAKE_INSTALL_PREFIX}/GDGui)
+# message(" -> ${filename}")
 
 # INSTALL( CODE
 #      "EXEC_PROGRAM( regsvr32 ARGS \"/s\" ARGS \"${filename}\"
@@ -40,6 +41,6 @@ message(" -> ${filename}")
 #  )
 
 install( TARGETS GDGui
-         RUNTIME DESTINATION bin )
+         ${SHARED_LIB} DESTINATION ${INSTALL_DIR}/bin )
 
 GDINSTALL_H( "Gui" ${GUI_HDRS} ${GUI_MOC_HDRS} )

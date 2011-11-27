@@ -11,9 +11,9 @@
  *
  */
 enum Licence {
-cluf,
-lgpl3,
-gpl3
+    cluf,
+    lgpl3,
+    gpl3
 };
 
 #endif

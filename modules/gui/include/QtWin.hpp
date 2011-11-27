@@ -2,6 +2,8 @@
 #ifndef QTWIN_HPP
 #define	QTWIN_HPP
 
+#ifdef _WIN32
+
 #include <Export.hpp>
 
 class WindowNotifier;
@@ -19,5 +21,7 @@ public:
 private:
     static WindowNotifier *windowNotifier();
 };
+
+#endif
 
 #endif

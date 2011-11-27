@@ -89,22 +89,22 @@ void About::init()
 
     connect(pButtonBox, SIGNAL(rejected()), this, SLOT(reject()));
 
-	// Transparencia (Solo Windows 7)
+    // Transparencia (Solo Windows 7)
 #ifdef _WIN32
-	this->setAttribute(Qt::WA_TranslucentBackground);
+    this->setAttribute(Qt::WA_TranslucentBackground);
     this->setAttribute(Qt::WA_NoSystemBackground, false);
-	QPalette pal = this->palette();
+    QPalette pal = this->palette();
     QColor bg = pal.window().color();
     bg.setAlpha(0x0);
     pal.setColor(QPalette::Window, bg);
     this->setPalette(pal);
     this->ensurePolished(); // workaround Oxygen filling the background
     this->setAttribute(Qt::WA_StyledBackground, false);
-#endif
 
-	if(QtWin::isCompositionEnabled())
-	{
+    if(QtWin::isCompositionEnabled())
+    {
         QtWin::extendFrameIntoClientArea(this);
         this->setContentsMargins(0, 0, 0, 0);
     }
+#endif
 }
