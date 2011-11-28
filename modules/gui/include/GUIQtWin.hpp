@@ -1,10 +1,17 @@
 
-#ifndef QTWIN_HPP
-#define	QTWIN_HPP
+#ifndef GUIQTWIN_HPP
+#define	GUIQTWIN_HPP
 
 #ifdef _WIN32
 
-#include <Export.hpp>
+// Own
+#include<GUIExport.hpp>
+
+class QWidget;
+class QColor;
+
+namespace GUI
+{
 
 class WindowNotifier;
 
@@ -21,6 +28,8 @@ public:
 private:
     static WindowNotifier *windowNotifier();
 };
+
+}
 
 #endif
 

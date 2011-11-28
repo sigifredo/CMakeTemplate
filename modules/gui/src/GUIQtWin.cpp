@@ -10,13 +10,16 @@
 
 #ifdef _WIN32
 
+// Own
+#include <GUIQtWin.hpp>
+#include <GUIWindowNotifier.hpp>
+
+// Qt
 #include <QLibrary>
 #include <QApplication>
 #include <QWidget>
 #include <QList>
 #include <QPointer>
-#include <QtWin.hpp>
-#include <WindowNotifier.hpp>
 
 #ifdef Q_WS_WIN
 
@@ -27,6 +30,8 @@
 #define DWM_BB_BLURREGION             0x00000002  // hRgnBlur has been specified
 #define DWM_BB_TRANSITIONONMAXIMIZED  0x00000004  // fTransitionOnMaximized has been specified
 #define WM_DWMCOMPOSITIONCHANGED        0x031E    // Composition changed window message
+
+using namespace GUI;
 
 typedef struct _DWM_BLURBEHIND
 {

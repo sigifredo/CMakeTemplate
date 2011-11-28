@@ -1,21 +1,28 @@
 
-#ifndef WINDOWNOTIFIER_HPP
-#define WINDOWNOTIFIER_HPP
+#ifndef GUIWINDOWNOTIFIER_HPP
+#define GUIWINDOWNOTIFIER_HPP
 
 #ifdef _WIN32
 
+// Own
+#include<GUIExport.hpp>
+
+// Qt
 #include<QWidget>
+
+namespace GUI
+{
 
 /**
  * Internal helper class that notifies windows if the
  * DWM compositing state changes and updates the widget
  * flags correspondingly.
  */
-class WindowNotifier : public QWidget
+class GDGUI_EXPORT WindowNotifier : public QWidget
 {
-    Q_OBJECT
+    //Q_OBJECT
 public:
-    WindowNotifier() {
+	WindowNotifier(QWidget * pParent = 0): QWidget(pParent) {
         winId();
     }
     void addWidget(QWidget *widget) {
@@ -29,6 +36,8 @@ public:
 private:
     QWidgetList widgets;
 };
+
+}
 
 #endif
 

@@ -3,6 +3,8 @@ include_directories(${GUI_DIR}/include)
 
 set( GUI_HDRS
 ${GUI_DIR}/include/GUIExport.hpp
+${GUI_DIR}/include/GUIWindowNotifier.hpp
+${GUI_DIR}/include/GUIQtWin.hpp
 )
 
 set( GUI_MOC_HDRS
@@ -10,7 +12,8 @@ ${GUI_DIR}/include/GUIAbout.hpp
 )
 
 if(${CMAKE_HOST_SYSTEM} MATCHES "Windows")
-    list(APPEND GUI_MOC_HDRS ${GUI_DIR}/include/QtWin.hpp ${GUI_DIR}/include/WindowNotifier.hpp)
+	message("----- agrega -----")
+    #list(APPEND GUI_MOC_HDRS ${GUI_DIR}/include/GUIWindowNotifier.hpp)
 endif()
 
 set( GUI_SRCS
@@ -26,6 +29,8 @@ qt4_wrap_cpp( GUI_MOC_SRCS ${GUI_MOC_HDRS} )
 qt4_add_resources( GUI_RCS_SRCS ${GUI_RCS} )
 
 set(GUI ${GUI_HDRS} ${GUI_MOC_SRCS} ${GUI_SRCS} ${GUI_RCS_SRCS})
+
+message(${GUI} ${GUI_MOC_HDRS})
 
 add_library( GDGui SHARED ${GUI} )
 

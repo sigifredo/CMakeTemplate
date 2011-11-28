@@ -55,6 +55,7 @@ QString About::strLicence(const Licence licence, const QString &sLicenced)
     switch(licence)
     {
         case lgpl3: return sLicenced + QString::fromUtf8(" es software libre: usted lo puede redistribuir y modificar \nbajo los términos de la licencia pública general reducida gnu\n(lgpl) como es publicado por la fundación de software libre\n(fsf), la versión 3 o cualquier versión posterior.\n\n") + sLicenced + QString::fromUtf8(" es distribuido en la espera de que será util,\npero sin alguna garantía; ni siquiera la garantía implícita de\ncomercialización o idoneidad para un propósito\nparticular. vease la licencia pública general reduciada gnu\npara más detalles.\n\nusted debe haber recibido una copia de la licencia pública\ngeneral reducida gnu junto con ") + sLicenced + ".\nSino, vea <http://www.gnu.org/licenses/>."; break;
+		default: return QString("Licencia no encontrada"); break;
     }
 }
 
