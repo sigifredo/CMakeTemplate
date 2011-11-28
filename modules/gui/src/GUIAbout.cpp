@@ -18,7 +18,7 @@ About::About(const QString &sAppName, const QString &sAppVersion, const QString 
     init();
 
     _sAppName = sAppName;
-    _pAppInfoLabel->setText("<font size=\"5\">" + sAppName + "</font><br><i>Version " + sAppVersion + "</i><br>Using GfifDev Development Platform 0.2");
+    _pAppInfoLabel->setText("<font size=\"5\">" + sAppName + "</font><br><i>" + QString::fromUtf8("Versión") + sAppVersion + "</i><br>Usando la plataforma de desarrollo de GfifDev 0.3");
     _pDescriptionLabel->setText(sDescription);
     setWindowTitle("About " + sAppName);
 }
@@ -31,6 +31,11 @@ void About::addAuthor(const QString &sName, const QString &sTask, const QString 
     else
         sAuthor += "</u></font><br>";
     _pAuthorsLabel->setText(_pAuthorsLabel->text() + sAuthor);
+}
+
+void About::setImage(const QString &sImagePath)
+{
+    _pIconLabel->setPixmap(QPixmap(sImagePath));
 }
 
 void About::setLicence(const Licence licence)
@@ -66,18 +71,21 @@ void About::init()
     _pAppInfoLabel = new QLabel(this);
     pLayout->addWidget(_pAppInfoLabel, 0, 1, 1, 1);
 
-// QTabWidget que tendrá la aplicación.
+    // QTabWidget que tendrá la aplicación.
     _pTabWidget = new QTabWidget(this);
+
+    // Pestaña de "Acerca de...". Aquí va la descripción.
     {
         QWidget * pAboutTab = new QWidget(_pTabWidget);
-        QGridLayout * pAboutLayout = new QGridLayout(pAboutTab);
+        QVBoxLayout * pAboutLayout = new QVBoxLayout(pAboutTab);
         _pDescriptionLabel = new QLabel(pAboutTab);
-        pAboutLayout->addWidget(_pDescriptionLabel, 0, 0, 1, 1);
-        _pTabWidget->addTab(pAboutTab, "About");
+        pAboutLayout->addWidget(_pDescriptionLabel);
+QSpacerItem * pSpacer = new QSpacerItem(10, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
+pAboutLayout->addItem(pSpacer);
+        _pTabWidget->addTab(pAboutTab, "Acerca de...");
     }
 
     QDialogButtonBox * pButtonBox = new QDialogButtonBox(this);
-    pButtonBox->setObjectName(QString::fromUtf8("buttonBox"));
     pButtonBox->setOrientation(Qt::Horizontal);
     pButtonBox->setStandardButtons(QDialogButtonBox::Close);
 
@@ -86,21 +94,23 @@ void About::init()
     // Pestaña de autores
     {
         QWidget * pAuthorTab = new QWidget(_pTabWidget);
-        QGridLayout * pAuthorsLayout = new QGridLayout(pAuthorTab);
+        QVBoxLayout * pAuthorsLayout = new QVBoxLayout(pAuthorTab);
         _pAuthorsLabel = new QLabel(pAuthorTab);
-        addAuthor("GfifDev Development Team", "Developers", "info@gfifdev.com", "www.gfifdev.com");
-        pAuthorsLayout->addWidget(_pAuthorsLabel, 0, 0, 1, 1);
-        _pTabWidget->addTab(pAuthorTab, "Authors");
+        addAuthor("Equipo de desarrollo de GfifDev", "Desarrollador", "info@gfifdev.com", "www.gfifdev.com");
+        pAuthorsLayout->addWidget(_pAuthorsLabel);
+        QSpacerItem * pSpacer = new QSpacerItem(10, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        pAuthorsLayout->addItem(pSpacer);
+        _pTabWidget->addTab(pAuthorTab, "Autores");
     }
 
     // Pestaña de licencia
     {
         QWidget * pLicenceTab = new QWidget(_pTabWidget);
-        QGridLayout * pLicenceLayout = new QGridLayout(pLicenceTab);
+        QVBoxLayout * pLicenceLayout = new QVBoxLayout(pLicenceTab);
         _pLicenceTextEdit = new QTextEdit(pLicenceTab);
         _pLicenceTextEdit->setReadOnly(true);
-        pLicenceLayout->addWidget(_pLicenceTextEdit, 0, 0, 1, 1);
-        _pTabWidget->addTab(pLicenceTab, "Licence");
+        pLicenceLayout->addWidget(_pLicenceTextEdit);
+        _pTabWidget->addTab(pLicenceTab, "Licencia");
     }
 
     pLayout->addWidget(_pTabWidget, 1, 0, 1, 2);

@@ -68,6 +68,14 @@ public:
     QString appName() const;
 
     /**
+     * \brief Establece la imagen que se mostrará en el cuadro de dialogo.
+     *
+     * @param sImagePath Ruta de la imagen a mostrar.
+     *
+     */
+    void setImage(const QString &sImagePath);
+
+    /**
      * \brief Indicamos la versión de la aplicación.
      *
      * @param licence Enumeración que indica la licencia de la aplicación
