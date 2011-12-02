@@ -18,9 +18,9 @@ About::About(const QString &sAppName, const QString &sAppVersion, const QString 
     init();
 
     _sAppName = sAppName;
-    _pAppInfoLabel->setText("<font size=\"5\">" + sAppName + "</font><br><i>" + QString::fromUtf8("Versión") + sAppVersion + "</i><br>Usando la plataforma de desarrollo de GfifDev 0.3");
+    _pAppInfoLabel->setText("<font size=\"5\">" + sAppName + "</font><br><i>" + QString::fromUtf8("Versión") + sAppVersion + "</i><br>Usando la plataforma de desarrollo de GfifDev 0.3<br>Y la biblioteca de desarrollo Qt 4.7.4.0");
     _pDescriptionLabel->setText(sDescription);
-    setWindowTitle("About " + sAppName);
+    setWindowTitle("Acerca de " + sAppName);
 }
 
 void About::addAuthor(const QString &sName, const QString &sTask, const QString &sEmail, const QString &sWebAddress)
@@ -120,20 +120,21 @@ pAboutLayout->addItem(pSpacer);
 
     // Transparencia (Solo Windows 7)
 #ifdef _WIN32
-    this->setAttribute(Qt::WA_TranslucentBackground);
-    this->setAttribute(Qt::WA_NoSystemBackground, false);
-    QPalette pal = this->palette();
-    QColor bg = pal.window().color();
-    bg.setAlpha(0x0);
-    pal.setColor(QPalette::Window, bg);
-    this->setPalette(pal);
-    this->ensurePolished(); // workaround Oxygen filling the background
-    this->setAttribute(Qt::WA_StyledBackground, false);
-
+	// verificamos que esté activada la transparencia en el sistema
     if(QtWin::isCompositionEnabled())
-    {
-        QtWin::extendFrameIntoClientArea(this);
-        this->setContentsMargins(0, 0, 0, 0);
-    }
+	{
+        this->setAttribute(Qt::WA_TranslucentBackground);
+        this->setAttribute(Qt::WA_NoSystemBackground, false);
+        QPalette pal = this->palette();
+        QColor bg = pal.window().color();
+        bg.setAlpha(0x0);
+        pal.setColor(QPalette::Window, bg);
+        this->setPalette(pal);
+        this->ensurePolished(); // workaround Oxygen filling the background
+        this->setAttribute(Qt::WA_StyledBackground, false);
+
+	    QtWin::extendFrameIntoClientArea(this);
+	    this->setContentsMargins(0, 0, 0, 0);
+	}
 #endif
 }

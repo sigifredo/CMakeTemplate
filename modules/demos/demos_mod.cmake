@@ -15,7 +15,7 @@ ${DEMO_DIR}/src/DemoWindow.cpp
 
 qt4_wrap_cpp(DEMO_MOC_SRCS ${DEMO_MOC_HDRS})
 
-add_library( ldemo SHARED
+add_library( base SHARED
 ${DEMO_HDRS}
 ${DEMO_MOC_SRCS}
 ${DEMO_SRCS}
@@ -28,10 +28,10 @@ endif()
 
 add_executable(demo ${DEMO})
 
-target_link_libraries(ldemo GDGui ${QT_LIBRARIES})
-target_link_libraries(demo ldemo)
+target_link_libraries(base GDGui ${QT_LIBRARIES})
+target_link_libraries(demo base ${QT_QTMAIN_LIBRARY})
 
-install(TARGETS demo ldemo
+install(TARGETS demo base
   RUNTIME DESTINATION bin
   LIBRARY DESTINATION bin
   )

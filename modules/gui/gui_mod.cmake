@@ -45,6 +45,6 @@ target_link_libraries(GDGui ${QT_LIBRARIES})
 #  )
 
 install( TARGETS GDGui
-         ${SHARED_LIB} DESTINATION ${INSTALL_DIR}/bin )
+         ${SHARED_LIB} DESTINATION ${INSTALL_DIR}bin )
 
 GDINSTALL_H( "Gui" ${GUI_HDRS} ${GUI_MOC_HDRS} )
