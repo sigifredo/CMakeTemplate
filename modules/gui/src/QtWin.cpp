@@ -62,7 +62,8 @@ static PtrDwmGetColorizationColor pDwmGetColorizationColor = 0;
 
 static bool resolveLibs()
 {
-    if (!pDwmIsCompositionEnabled) {
+    if (!pDwmIsCompositionEnabled)
+    {
         QLibrary dwmLib(QString::fromAscii("dwmapi"));
         pDwmIsCompositionEnabled =(PtrDwmIsCompositionEnabled)dwmLib.resolve("DwmIsCompositionEnabled");
         pDwmExtendFrameIntoClientArea = (PtrDwmExtendFrameIntoClientArea)dwmLib.resolve("DwmExtendFrameIntoClientArea");
@@ -87,7 +88,8 @@ static bool resolveLibs()
 bool QtWin::isCompositionEnabled()
 {
 #ifdef Q_WS_WIN
-    if (resolveLibs()) {
+    if (resolveLibs())
+    {
         HRESULT hr = S_OK;
         BOOL isEnabled = false;
         hr = pDwmIsCompositionEnabled(&isEnabled);
@@ -108,7 +110,8 @@ bool QtWin::enableBlurBehindWindow(QWidget *widget, bool enable)
     Q_ASSERT(widget);
     bool result = false;
 #ifdef Q_WS_WIN
-    if (resolveLibs()) {
+    if (resolveLibs())
+    {
         DWM_BLURBEHIND bb = {0};
         HRESULT hr = S_OK;
         bb.fEnable = enable;
@@ -117,7 +120,8 @@ bool QtWin::enableBlurBehindWindow(QWidget *widget, bool enable)
         widget->setAttribute(Qt::WA_TranslucentBackground, enable);
         widget->setAttribute(Qt::WA_NoSystemBackground, enable);
         hr = pDwmEnableBlurBehindWindow(widget->winId(), &bb);
-        if (SUCCEEDED(hr)) {
+        if (SUCCEEDED(hr))
+        {
             result = true;
             windowNotifier()->addWidget(widget);
         }
@@ -149,12 +153,14 @@ bool QtWin::extendFrameIntoClientArea(QWidget *widget, int left, int top, int ri
 
     bool result = false;
 #ifdef Q_WS_WIN
-    if (resolveLibs()) {
+    if (resolveLibs())
+    {
         QLibrary dwmLib(QString::fromAscii("dwmapi"));
         HRESULT hr = S_OK;
         MARGINS m = {left, top, right, bottom};
         hr = pDwmExtendFrameIntoClientArea(widget->winId(), &m);
-        if (SUCCEEDED(hr)) {
+        if (SUCCEEDED(hr))
+        {
             result = true;
             windowNotifier()->addWidget(widget);
         }
@@ -174,7 +180,8 @@ QColor QtWin::colorizatinColor()
     QColor resultColor = QApplication::palette().window().color();
 
 #ifdef Q_WS_WIN
-    if (resolveLibs()) {
+    if (resolveLibs())
+    {
         DWORD color = 0;
         BOOL opaque = FALSE;
         QLibrary dwmLib(QString::fromAscii("dwmapi"));
@@ -200,10 +207,13 @@ WindowNotifier *QtWin::windowNotifier()
 /* Notify all enabled windows that the DWM state changed */
 bool WindowNotifier::winEvent(MSG *message, long *result)
 {
-    if (message && message->message == WM_DWMCOMPOSITIONCHANGED) {
+    if (message && message->message == WM_DWMCOMPOSITIONCHANGED)
+    {
         bool compositionEnabled = QtWin::isCompositionEnabled();
-        foreach(QWidget * widget, widgets) {
-            if (widget) {
+        foreach(QWidget * widget, widgets)
+        {
+            if (widget)
+            {
                 widget->setAttribute(Qt::WA_NoSystemBackground, compositionEnabled);
             }
             widget->update();

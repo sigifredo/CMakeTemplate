@@ -23,13 +23,16 @@ class GUI_EXPORT WindowNotifier : public QWidget
 {
     //Q_OBJECT
 public:
-	WindowNotifier(QWidget * pParent = 0): QWidget(pParent) {
+    WindowNotifier(QWidget * pParent = nullptr): QWidget(pParent)
+    {
         winId();
     }
-    void addWidget(QWidget *widget) {
+    void addWidget(QWidget *widget)
+    {
         widgets.append(widget);
     }
-    void removeWidget(QWidget *widget) {
+    void removeWidget(QWidget *widget)
+    {
         widgets.removeAll(widget);
     }
     bool winEvent(MSG *message, long *result);
