@@ -23,4 +23,5 @@ qt5_use_modules(libreria Core Widgets)
 target_link_libraries(libreria gui ${QT_LIBRARIES})
 target_link_libraries(demo libreria)
 
-install(TARGETS demo libreria RUNTIME DESTINATION bin LIBRARY DESTINATION bin)
+install(TARGETS demo RUNTIME DESTINATION bin )
+install(TARGETS libreria LIBRARY DESTINATION lib)

@@ -24,4 +24,4 @@ qt5_use_modules(gui Core Widgets)
 
 target_link_libraries(gui ${QT_LIBRARIES})
 
-install( TARGETS gui ${SHARED_LIB} DESTINATION ${INSTALL_DIR}/bin)
+install( TARGETS gui LIBRARY DESTINATION lib)
