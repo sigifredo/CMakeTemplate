@@ -1,11 +1,12 @@
 
-#ifndef GUIQTWIN_HPP
-#define	GUIQTWIN_HPP
+
+#ifndef GUI_QTWIN_HPP
+#define GUI_QTWIN_HPP
 
 #ifdef _WIN32
 
 // Own
-#include<GUIExport.hpp>
+#include<Export.hpp>
 
 class QWidget;
 class QColor;
@@ -15,7 +16,7 @@ namespace GUI
 
 class WindowNotifier;
 
-class GDGUI_EXPORT QtWin
+class GUI_EXPORT QtWin
 {
 public:
     static bool enableBlurBehindWindow(QWidget *widget, bool enable = true);

@@ -1,11 +1,12 @@
 
-#ifndef GUIWINDOWNOTIFIER_HPP
-#define GUIWINDOWNOTIFIER_HPP
+
+#ifndef GUI_WINDOWNOTIFIER_HPP
+#define GUI_WINDOWNOTIFIER_HPP
 
 #ifdef _WIN32
 
 // Own
-#include<GUIExport.hpp>
+#include<Export.hpp>
 
 // Qt
 #include<QWidget>
@@ -18,7 +19,7 @@ namespace GUI
  * DWM compositing state changes and updates the widget
  * flags correspondingly.
  */
-class GDGUI_EXPORT WindowNotifier : public QWidget
+class GUI_EXPORT WindowNotifier : public QWidget
 {
     //Q_OBJECT
 public:

@@ -1,11 +1,13 @@
-#ifndef GDBASE_ABOUT_HPP
-#define GDBASE_ABOUT_HPP
 
-// Own
-#include<GUIExport.hpp>
+
+#ifndef GUI_ABOUT_HPP
+#define GUI_ABOUT_HPP
+
+// gui
+#include <gui/Export.hpp>
 
 // Qt
-#include<QDialog>
+#include <QDialog>
 
 class QLabel;
 class QTextEdit;
@@ -21,7 +23,7 @@ namespace GUI
  * Clase que inplementa un cuadro de dialogo con toda la información que se quiere mostrar al usuario acerca de nuestra aplicación.
  *
  */
-class GDGUI_EXPORT About: public QDialog
+class GUI_EXPORT About: public QDialog
 {
     Q_OBJECT
 public:
@@ -41,12 +43,11 @@ public:
      * \brief Constructor de la clase.
      *
      * @param sAppName Nombre de la aplicación.
-     * @param sAppVersion Versión de la aplicación.
      * @param sDescription Descripción de la aplicación.
      * @param pParent Puntero al objeto padre.
      *
      */
-    About(const QString &sAppName, const QString &sAppVersion, const QString &sDescription, QWidget * pParent = 0);
+    About(const QString& sAppName, const QString& sDescription, QWidget * pParent = nullptr);
 
     /**
      * \brief Agregamos un nuevo autor.
@@ -57,7 +58,7 @@ public:
      * @param sWebAddress Dirección web del autor.
      *
      */
-    void addAuthor(const QString &sName, const QString &sTask, const QString &sEmail, const QString &sWebAddress = QString(""));
+    void addAuthor(const QString& sName, const QString& sTask, const QString& sEmail, const QString& sWebAddress = "");
 
     /**
      * \brief Obtenemos el nombre de la aplicación.
@@ -73,7 +74,7 @@ public:
      * @param sImagePath Ruta de la imagen a mostrar.
      *
      */
-    void setImage(const QString &sImagePath);
+    void setImage(const QString& sImagePath);
 
     /**
      * \brief Indicamos la versión de la aplicación.
@@ -81,15 +82,7 @@ public:
      * @param licence Enumeración que indica la licencia de la aplicación
      *
      */
-    void setLicence(const Licence licence);
-
-    /**
-     * \brief Establecemos la versión de la aplicación.
-     *
-     * @param sVersion Versión de la aplicación.
-     *
-     */
-    void setVersion(const QString sVersion);
+    void setLicence(const Licence& eLicence);
 
     /**
      * \brief Retorna una cadena con la licencia pasada como argumento.
@@ -100,7 +93,7 @@ public:
      * @return Cadena con la licencia especificada.
      *
      */
-    static QString strLicence(const Licence licence, const QString &sLicenced);
+    static QString strLicence(const Licence& eLicence, const QString& sLicenced);
 
 protected:
 

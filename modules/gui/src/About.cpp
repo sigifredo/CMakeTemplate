@@ -1,7 +1,7 @@
 
 // Own
-#include<GUIAbout.hpp>
-#include<GUIQtWin.hpp>
+#include<About.hpp>
+#include<QtWin.hpp>
 
 // Qt
 #include<QGridLayout>
@@ -12,50 +12,54 @@
 
 using namespace GUI;
 
-About::About(const QString &sAppName, const QString &sAppVersion, const QString &sDescription, QWidget * pParent):
+About::About(const QString& sAppName, const QString& sDescription, QWidget * pParent):
     QDialog(pParent)
 {
     init();
 
     _sAppName = sAppName;
-    _pAppInfoLabel->setText("<font size=\"5\">" + sAppName + "</font><br><i>" + QString::fromUtf8("Versión") + sAppVersion + "</i><br>Usando la plataforma de desarrollo de GfifDev 0.3");
+    _pAppInfoLabel->setText("<font size=\"5\">" + sAppName + "</font><br><i>" + QString::fromUtf8("Versión: ") + CMAKETEMPLATE_VERSION_STR + "</i><br>Compilado sobre: Qt " + QT_VERSION_STR + "<br>Corriendo sobre: Qt " + qVersion());
     _pDescriptionLabel->setText(sDescription);
     setWindowTitle("About " + sAppName);
 }
 
-void About::addAuthor(const QString &sName, const QString &sTask, const QString &sEmail, const QString &sWebAddress)
+void About::addAuthor(const QString& sName, const QString& sTask, const QString& sEmail, const QString& sWebAddress)
 {
     QString sAuthor = "<br><b>" + sName + "</b><br><i>" + sTask + "</i><br><font color=\"#0000ff\"><u>" + sEmail;
-    if(sWebAddress.trimmed() != "")
+    if (sWebAddress.trimmed() != "")
+    {
         sAuthor += "<br>" + sWebAddress + "</u></font><br>";
+    }
     else
+    {
         sAuthor += "</u></font><br>";
+    }
     _pAuthorsLabel->setText(_pAuthorsLabel->text() + sAuthor);
 }
 
-void About::setImage(const QString &sImagePath)
+void About::setImage(const QString& sImagePath)
 {
     _pIconLabel->setPixmap(QPixmap(sImagePath));
 }
 
-void About::setLicence(const Licence licence)
+void About::setLicence(const Licence& eLicence)
 {
-    _pLicenceTextEdit->setText(strLicence(lgpl3, "Demo"));
+    _pLicenceTextEdit->setText(strLicence(eLicence, "Demo"));
 }
 
-void About::setVersion(const QString sVersion)
-{
-}
-
-QString About::strLicence(const Licence licence, const QString &sLicenced)
+QString About::strLicence(const Licence& eLicence, const QString& sLicenced)
 {
 #ifndef _WIN32
 #warning "Faltan licencias"
 #endif
-    switch(licence)
+    switch (eLicence)
     {
-        case lgpl3: return sLicenced + QString::fromUtf8(" es software libre: usted lo puede redistribuir y modificar \nbajo los términos de la licencia pública general reducida gnu\n(lgpl) como es publicado por la fundación de software libre\n(fsf), la versión 3 o cualquier versión posterior.\n\n") + sLicenced + QString::fromUtf8(" es distribuido en la espera de que será util,\npero sin alguna garantía; ni siquiera la garantía implícita de\ncomercialización o idoneidad para un propósito\nparticular. vease la licencia pública general reduciada gnu\npara más detalles.\n\nusted debe haber recibido una copia de la licencia pública\ngeneral reducida gnu junto con ") + sLicenced + ".\nSino, vea <http://www.gnu.org/licenses/>."; break;
-		default: return QString("Licencia no encontrada"); break;
+        case lgpl3:
+            return sLicenced + QString::fromUtf8(" es software libre: usted lo puede redistribuir y modificar \nbajo los términos de la licencia pública general reducida gnu\n(lgpl) como es publicado por la fundación de software libre\n(fsf), la versión 3 o cualquier versión posterior.\n\n") + sLicenced + QString::fromUtf8(" es distribuido en la espera de que será util,\npero sin alguna garantía; ni siquiera la garantía implícita de\ncomercialización o idoneidad para un propósito\nparticular. vease la licencia pública general reduciada gnu\npara más detalles.\n\nusted debe haber recibido una copia de la licencia pública\ngeneral reducida gnu junto con ") + sLicenced + ".\nSino, vea <http://www.gnu.org/licenses/>.";
+            break;
+
+        default:
+            return QString("Licencia no encontrada");
     }
 }
 
@@ -81,8 +85,8 @@ void About::init()
         QVBoxLayout * pAboutLayout = new QVBoxLayout(pAboutTab);
         _pDescriptionLabel = new QLabel(pAboutTab);
         pAboutLayout->addWidget(_pDescriptionLabel);
-QSpacerItem * pSpacer = new QSpacerItem(10, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
-pAboutLayout->addItem(pSpacer);
+        QSpacerItem * pSpacer = new QSpacerItem(10, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        pAboutLayout->addItem(pSpacer);
         _pTabWidget->addTab(pAboutTab, "Acerca de...");
     }
 
@@ -97,7 +101,7 @@ pAboutLayout->addItem(pSpacer);
         QWidget * pAuthorTab = new QWidget(_pTabWidget);
         QVBoxLayout * pAuthorsLayout = new QVBoxLayout(pAuthorTab);
         _pAuthorsLabel = new QLabel(pAuthorTab);
-        addAuthor("Equipo de desarrollo de GfifDev", "Desarrollador", "info@gfifdev.com", "www.gfifdev.com");
+        addAuthor("Sigifredo Escobar Gómez", "Desarrollador", "sigifredo89@gmail.com", "sigifredo.github.io");
         pAuthorsLayout->addWidget(_pAuthorsLabel);
         QSpacerItem * pSpacer = new QSpacerItem(10, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
         pAuthorsLayout->addItem(pSpacer);
@@ -130,7 +134,7 @@ pAboutLayout->addItem(pSpacer);
     this->ensurePolished(); // workaround Oxygen filling the background
     this->setAttribute(Qt::WA_StyledBackground, false);
 
-    if(QtWin::isCompositionEnabled())
+    if (QtWin::isCompositionEnabled())
     {
         QtWin::extendFrameIntoClientArea(this);
         this->setContentsMargins(0, 0, 0, 0);
