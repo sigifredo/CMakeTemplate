@@ -1,14 +1,14 @@
-GDBase es software libre: usted lo puede redistribuir y modificar
+CMakeTemplage es software libre: usted lo puede redistribuir y modificar
 bajo los términos de la licencia pública general reducida gnu
 (lgpl) como es publicado por la fundación de software libre
 (fsf), la versión 3 o cualquier versión posterior.
 
-GDBase es distribuido en la espera de que será util,
+CMakeTemplage es distribuido en la espera de que será util,
 pero sin alguna garantía; ni siquiera la garantía implícita de
 comercialización o idoneidad para un propósito
 particular. Vease la licencia pública general reduciada gnu
 para más detalles.
 
 usted debe haber recibido una copia de la licencia pública
-general reducida gnu junto con GDBase.
+general reducida gnu junto con CMakeTemplage.
 Sino, vea <http://www.gnu.org/licenses/>.
